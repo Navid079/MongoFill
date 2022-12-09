@@ -1,15 +1,4 @@
-const { promises: fs, existsSync, readFileSync } = require("fs");
-const path = require("path");
-
-const getAbsolutePath = modelPath => {
-  if (path.win32.isAbsolute(modelPath)) {
-    return modelPath;
-  } else {
-    return path.win32.join(process.cwd(), modelPath);
-  }
-};
-
-const isFileExists = modelPath => existsSync(modelPath);
+const fs = require("../../helpers/fs");
 
 const compileModel = content => {
   const lines = content.split("\n");
@@ -21,10 +10,10 @@ const compileModel = content => {
   return modelObject;
 };
 
-module.exports = modelPath => {
-  const absPath = getAbsolutePath(modelPath);
-  if (!isFileExists(absPath)) throw new Error("1");
-  const fileContent = readFileSync(absPath, "ascii");
+module.exports = async modelPath => {
+  const absPath = fs.getAbsolutePath(modelPath);
+  if (!fs.isFileExists(absPath)) throw new Error("1");
+  const fileContent = await fs.readFile(absPath, "ascii");
 
   return compileModel(fileContent);
 };

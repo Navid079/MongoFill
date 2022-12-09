@@ -15,7 +15,7 @@ const start = async () => {
   const argv = args(process.argv);
   const { username, password, host, port, database, model } = argv;
 
-  const compiledModel = modelCompiler(model);
+  const compiledModel = await modelCompiler(model);
 
   const mongooseConnection = await dbConnect({
     username,
@@ -31,4 +31,4 @@ const start = async () => {
   }
 };
 
-start();
+start()
