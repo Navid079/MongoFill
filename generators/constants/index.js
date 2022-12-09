@@ -1,6 +1,8 @@
 module.exports = input => {
   const value = input.slice(1);
   switch (value) {
+    case "space":
+      return " ";
     case "array":
       return [];
     case "object":
