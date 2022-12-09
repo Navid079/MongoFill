@@ -3,7 +3,7 @@
 const yargs = require("yargs/yargs");
 const { hideBin } = require("yargs/helpers");
 
-const info = require("../messages/info");
+const info = require("../../messages/info");
 
 module.exports = argv => {
   const compiled = yargs(hideBin(argv))
