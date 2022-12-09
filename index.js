@@ -26,7 +26,8 @@ const start = async () => {
   });
 
   for (let [name, value] of Object.entries(compiledModel)) {
-    generate(value).then(res => console.log(res));
+    const res = await generate(value);
+    console.log(name, res);
   }
 };
 

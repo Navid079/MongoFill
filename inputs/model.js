@@ -23,7 +23,6 @@ const compileModel = content => {
 
 module.exports = modelPath => {
   const absPath = getAbsolutePath(modelPath);
-  console.log(absPath)
   if (!isFileExists(absPath)) throw new Error("1");
   const fileContent = readFileSync(absPath, "ascii");
 
