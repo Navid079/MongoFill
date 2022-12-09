@@ -1,34 +1,4 @@
 "use strict";
+const app = require("./app");
 
-// Core modules
-const fs = require("fs/promises");
-const path = require("path");
-
-// Module components
-const dbConnect = require("./connections/db-connection");
-const args = require("./inputs/args");
-const modelCompiler = require("./inputs/model");
-const generate = require("./generators");
-
-// start point
-const start = async () => {
-  const argv = args(process.argv);
-  const { username, password, host, port, database, model } = argv;
-
-  const compiledModel = await modelCompiler(model);
-
-  const mongooseConnection = await dbConnect({
-    username,
-    password,
-    host,
-    port,
-    database,
-  });
-
-  for (let [name, value] of Object.entries(compiledModel)) {
-    const res = await generate(value);
-    console.log(name, res);
-  }
-};
-
-start()
+app();
