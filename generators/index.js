@@ -1,7 +1,19 @@
 const random = require("./randoms");
+const constant = require("./constants");
 
-module.exports = value => {
-  if (value.startsWith("#")) return random(value);
+const generate = value => {
+  if (typeof value !== "string") return value;
 
-  return value;
+  const type = value[0];
+
+  switch (type) {
+    case "#":
+      return generate(random(value));
+    case "-":
+      return generate(constant(value));
+    default:
+      return value;
+  }
 };
+
+module.exports = generate;

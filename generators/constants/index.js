@@ -1,12 +1,13 @@
-module.exports = name => {
-  switch (name.toLowerCase()) {
+module.exports = input => {
+  const value = input.slice(1);
+  switch (value) {
     case "array":
       return [];
     case "object":
       return {};
     case "hashtag":
       return "#";
-    case "atsign":
+    case "at":
       return "@";
     case "dollar":
       return "$";
@@ -18,5 +19,9 @@ module.exports = name => {
       return false;
     case "now":
       return new Date();
+    case "null":
+      return null;
+    default:
+      throw new Error("5");
   }
 };
