@@ -3,6 +3,7 @@ const constant = require("./constants");
 const bcrypt = require("./bcrypt");
 const faker = require("./fake");
 const funcs = require("./functions");
+const file = require("./file");
 
 const generate = async value => {
   if (typeof value !== "string") return value;
@@ -20,6 +21,8 @@ const generate = async value => {
       return generate(faker(value));
     case "*":
       return generate(funcs(value, generate));
+    case "@":
+      return generate(await file(value));
     default:
       return value;
   }
