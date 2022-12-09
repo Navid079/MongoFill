@@ -6,8 +6,11 @@ const path = require("path");
 
 // Module components
 const dbConnect = require("./connections/db-connection");
+const args = require("./inputs/args");
 
-console.log('first')
-dbConnect({ host: "0.0.0.0", database: "test" }).then(result => {
+const argv = args(process.argv);
+const { username, password, host, port, database } = argv;
+
+dbConnect({ username, password, host, port, database }).then(result => {
   console.log(result.url);
 });
