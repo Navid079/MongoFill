@@ -25,7 +25,6 @@
   "homepage": "https://github.com/Navid079/MongoFill.js#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
-    "crypto": "^1.0.1",
     "faker-js": "^1.0.0",
     "mongoose": "^6.8.0",
     "yargs": "^17.6.2"

@@ -8,6 +8,7 @@ const path = require("path");
 const dbConnect = require("./connections/db-connection");
 const args = require("./inputs/args");
 const modelCompiler = require("./inputs/model");
+const generate = require("./generators");
 
 // start point
 const start = async () => {
@@ -23,6 +24,10 @@ const start = async () => {
     port,
     database,
   });
+
+  for (let [name, value] of Object.entries(compiledModel)) {
+    console.log(generate(value));
+  }
 };
 
 start();
