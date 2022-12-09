@@ -1,4 +1,4 @@
-const { promises: fs, existsSync } = require("fs");
+const { promises: fs, existsSync, createWriteStream } = require("fs");
 const path = require("path/win32");
 
 exports.getAbsolutePath = filePath => {
@@ -11,3 +11,4 @@ exports.getAbsolutePath = filePath => {
 
 exports.isFileExists = filePath => existsSync(filePath);
 exports.readFile = fs.readFile;
+exports.wstream = createWriteStream;

@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 
 const app = require("./app");
 
-app().then(() => {
-  console.log("Finished");
-  mongoose.disconnect();
-});
+if (require.main === module) {
+  app().then(() => {
+    console.log("Finished");
+    mongoose.disconnect();
+  });
+}

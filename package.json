@@ -22,6 +22,7 @@
   "bugs": {
     "url": "https://github.com/Navid079/MongoFill.js/issues"
   },
+  "bin": "index.js",
   "homepage": "https://github.com/Navid079/MongoFill.js#readme",
   "dependencies": {
     "@faker-js/faker": "^7.6.0",

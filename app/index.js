@@ -3,6 +3,7 @@ const args = require("../inputs/args");
 const model = require("../inputs/model");
 const bundler = require("./bundler");
 const store = require("./store");
+const save = require("./save");
 
 const generateAndStore = async (compiled, n, collection) => {
   const bundle = await bundler(compiled, n);
@@ -15,6 +16,7 @@ const main = async () => {
   const compiled = await model(argv.model);
   await connections(argv);
 
+  save.initialize(argv.save);
   const promises = [];
 
   for (let i = 0; i < Math.floor(argv.count / 100); i++) {
