@@ -1,18 +1,31 @@
-const generate = require("../generators");
 const connections = require("../connections");
 const args = require("../inputs/args");
 const model = require("../inputs/model");
+const bundler = require("./bundler");
+const store = require("./store");
+
+const generateAndStore = async (compiled, n, collection) => {
+  const bundle = await bundler(compiled, n);
+  return store(bundle, collection);
+};
 
 const main = async () => {
   const argv = args(process.argv);
 
-  const compiledModel = await model(argv.model);
-  const mongooseConnection = await connections(argv);
+  const compiled = await model(argv.model);
+  await connections(argv);
 
-  for (let [name, value] of Object.entries(compiledModel)) {
-    const res = await generate(value);
-    console.log(name, res);
+  const promises = [];
+
+  for (let i = 0; i < Math.floor(argv.count / 100); i++) {
+    let n = (i + 1) * 100;
+    if (n > argv.count) n = argv.count - i * 100;
+    else n = 100;
+    const promise = generateAndStore(compiled, n, argv.collection);
+    promises.push(promise);
   }
+
+  return Promise.all(promises);
 };
 
 module.exports = main;
