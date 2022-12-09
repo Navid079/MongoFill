@@ -2,6 +2,7 @@ const random = require("./randoms");
 const constant = require("./constants");
 const bcrypt = require("./bcrypt");
 const faker = require("./fake");
+const funcs = require("./functions");
 
 const generate = async value => {
   if (typeof value !== "string") return value;
@@ -17,6 +18,8 @@ const generate = async value => {
       return bcrypt(value);
     case "$":
       return generate(faker(value));
+    case "*":
+      return generate(funcs(value, generate));
     default:
       return value;
   }
