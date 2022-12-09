@@ -1,7 +1,8 @@
 const random = require("./randoms");
 const constant = require("./constants");
+const bcrypt = require("./bcrypt");
 
-const generate = value => {
+const generate = async value => {
   if (typeof value !== "string") return value;
 
   const type = value[0];
@@ -11,6 +12,8 @@ const generate = value => {
       return generate(random(value));
     case "-":
       return generate(constant(value));
+    case "!":
+      return generate(await bcrypt(value));
     default:
       return value;
   }
