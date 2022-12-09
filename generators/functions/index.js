@@ -16,21 +16,19 @@ const compileFunction = func => {
       if (c === "(") state = read_pars;
       else name += c;
     } else if (state === read_pars) {
-      if (c === ",") {
+      if (c === ";") {
         if (!buffer) throw new Error("7");
         const par = buffer.trim();
-        if (par.includes(" ")) throw new Error("8");
         pars.push(par);
         buffer = "";
       } else if (c === ")") {
         if (buffer) {
           const par = buffer.trim();
-          if (par.includes(" ")) throw new Error("8");
           pars.push(par);
         }
         state = halt;
       } else buffer += c;
-    } else throw new Error(9);
+    } else throw new Error("8");
   }
 
   return [name, pars];
