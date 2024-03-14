@@ -1,0 +1,5 @@
+fullName=*cat($firstname, -space, $lastname)
+email=*cat($firstname, -dash, $lastname, #integer{10,99}, -at, gmail.com)
+comments=-array
+createdAt=-now
+referrer=@referrerIds

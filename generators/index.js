@@ -12,13 +12,13 @@ const generate = async value => {
 
   switch (type) {
     case "#":
-      return random(value.slice(1));
+      return random(generate(value.slice(1)));
     case "-":
-      return constant(value.slice(1));
+      return constant(generate(value.slice(1)));
     case "!":
-      return bcrypt(value.slice(1));
+      return bcrypt(generate(value.slice(1)));
     case "$":
-      return faker(value.slice(1));
+      return faker(generate(value.slice(1)));
     case "*":
       return funcs(value.slice(1), generate);
     case "@":

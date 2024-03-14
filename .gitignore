@@ -1,3 +1,4 @@
 /node_modules
 *.fake
 *.dat
+!examples/*

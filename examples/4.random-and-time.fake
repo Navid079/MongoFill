@@ -1,0 +1,9 @@
+firstName=$firstname
+lastName=$lastname
+username=$username
+email=$email
+password=!password
+profilePic=$avatar
+dateOfBirth=#date{-10000d,-8000d}
+createdAt=#date{-400d,-5m}
+otp=#integer{1000,9999}
