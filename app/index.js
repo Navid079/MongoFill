@@ -5,29 +5,28 @@ const bundler = require("./bundler");
 const store = require("./store");
 const save = require("./save");
 
-const generateAndStore = async (compiled, n, collection) => {
-  const bundle = await bundler(compiled, n);
-  return store(bundle, collection);
-};
-
 const main = async () => {
+  // Compile Program Arguments
   const argv = args(process.argv);
 
+  // Compile Data Model
   const compiled = await model(argv.model);
+
+  // Connect to database
   await connections(argv);
 
+  // Initialize File Writer Streams
   save.initialize(argv.save);
-  const promises = [];
 
-  for (let i = 0; i < Math.floor(argv.count / 100); i++) {
-    let n = (i + 1) * 100;
-    if (n > argv.count) n = argv.count - i * 100;
-    else n = 100;
-    const promise = generateAndStore(compiled, n, argv.collection);
-    promises.push(promise);
-  }
+  // Start job in batches
+  await Promise.all(
+    Array.from({ length: Math.ceil(argv.count / 100) }, async (_, i) => {
+      const n = Math.min(argv.count - i * 100, 100);
 
-  return Promise.all(promises);
+      const bundle = await bundler(compiled, n);
+      return store(bundle, argv.collection);
+    })
+  );
 };
 
 module.exports = main;

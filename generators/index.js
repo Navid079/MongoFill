@@ -12,17 +12,17 @@ const generate = async value => {
 
   switch (type) {
     case "#":
-      return generate(random(value));
+      return random(value.slice(1));
     case "-":
-      return generate(constant(value));
+      return constant(value.slice(1));
     case "!":
-      return bcrypt(value);
+      return bcrypt(value.slice(1));
     case "$":
-      return generate(faker(value));
+      return faker(value.slice(1));
     case "*":
-      return generate(funcs(value, generate));
+      return funcs(value.slice(1), generate);
     case "@":
-      return generate(await file(value));
+      return generate(await file(value.slice(1)));
     default:
       return value;
   }

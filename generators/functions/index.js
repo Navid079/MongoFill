@@ -34,9 +34,7 @@ const compileFunction = func => {
   return [name, pars];
 };
 
-const functions = async (input, generate) => {
-  const value = input.slice(1);
-
+const functions = async (value, generate) => {
   const [name, pars] = compileFunction(value);
   if (name === "cat") return await concat(pars, generate);
 };

@@ -5,21 +5,25 @@ const toSave = {};
 exports.initialize = saves => {
   if (!saves) return;
 
-  for (let item of saves) {
-    try {
-      const [prop, name] = item.split(":");
-      toSave[prop] = fs.wstream(fs.getAbsolutePath(name) + ".dat");
-    } catch (err) {
-      console.log(`Save switch cannot accept value: ${item}`);
-      throw err;
-    }
+  try {
+    toSave = Object.fromEntries(
+      saves
+        .map(item => item.split(":"))
+        .map(([prop, name]) => [
+          prop,
+          fs.wstream(fs.getAbsolutePath(name) + ".dat"),
+        ])
+    );
+  } catch (err) {
+    console.log(`Save switch cannot accept value`);
+    throw err;
   }
 };
 
 exports.save = bundle => {
-  for (let item of bundle) {
-    for (let key of Object.keys(toSave)) {
-      toSave[key].write(JSON.stringify(item[key]) + "\n");
-    }
-  }
+  bundle.forEach(item => {
+    Object.keys(toSave).forEach(key => {
+      toSave[key].write(JSON.stringify(item[key] + "\n"));
+    });
+  });
 };

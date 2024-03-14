@@ -1,7 +1,6 @@
 const { faker } = require("@faker-js/faker");
 
-module.exports = input => {
-  const value = input.slice(1);
+module.exports = value => {
   switch (value) {
     case "firstname":
       return faker.name.firstName();

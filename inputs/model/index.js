@@ -1,7 +1,11 @@
 const fs = require("../../helpers/fs");
 
 const compileModel = content => {
-  const lines = content.split("\n");
+  const lines = content
+    .split("\n")
+    .map(line => line.trim())
+    .filter(line => line);
+
   const modelArray = lines.map(line => line.split("="));
   if (modelArray.find(item => item.length !== 2)) throw new Error("2");
 

@@ -1,5 +1,4 @@
-module.exports = input => {
-  const value = input.slice(1);
+module.exports = value => {
   switch (value) {
     case "space":
       return " ";

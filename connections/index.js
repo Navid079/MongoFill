@@ -5,7 +5,9 @@ mongoose.set("strictQuery", false);
 
 const createCredentials = (username, password) =>
   username ? `${username}:${password}@` : "";
+
 const createSocketAddress = (host, port) => `${host}:${port || 27017}`;
+
 const createUrl = (username, password, host, port, database) =>
   `mongodb://${createCredentials(username, password)}${createSocketAddress(
     host,
