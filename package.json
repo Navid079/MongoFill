@@ -1,12 +1,12 @@
 {
-  "name": "mongo-seeder",
+  "name": "mongofill",
   "version": "0.1.0",
   "description": "A powerful tool for generating fake data in mongodb using faker-js and mongoose",
   "main": "index.js",
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Navid079/MongoSeeder.js.git"
+    "url": "git+https://github.com/Navid079/MongoFill.git"
   },
   "keywords": [
     "fake",
@@ -21,10 +21,10 @@
   "author": "Navid079",
   "license": "AGPL-3.0-only",
   "bugs": {
-    "url": "https://github.com/Navid079/MongoSeeder.js/issues"
+    "url": "https://github.com/Navid079/MongoFill/issues"
   },
   "bin": "index.js",
-  "homepage": "https://github.com/Navid079/MongoSeeder.js#readme",
+  "homepage": "https://github.com/Navid079/MongoFill#readme",
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
     "bcrypt": "^5.1.0",

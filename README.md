@@ -1,7 +1,7 @@
 # MongoSeed.js
 
 MongoSeed.js is a JavaScript repository that makes populating MongoDB databases with fake data a breeze.
-With the power of Mongoose and Faker, MongoSeeder.js lets you generate large volumes of realistic but fictitious data with ease.
+With the power of Mongoose and Faker, MongoFill lets you generate large volumes of realistic but fictitious data with ease.
 It provides its own data model syntax, making it simple to define the structure of your data.
 
 ## Features
@@ -26,9 +26,9 @@ Let's unleash the power of MongoSeed.js together!
 
 ## Installation
 
-To get started with MongoSeeder.js, install it using `NPM`:
+To get started with MongoFill, install it using `NPM`:
 ```bash
-npm install mongo-seeder
+npm install mongofill
 ```
 
 ## License
