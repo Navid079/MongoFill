@@ -1,11 +1,9 @@
 {
-  "name": "mongofill",
-  "version": "1.0.0",
+  "name": "mongoseed",
+  "version": "0.1.0",
   "description": "A powerful tool for generating fake data in mongodb using faker-js and mongoose",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Navid079/MongoFill.js.git"
@@ -15,10 +13,12 @@
     "faker",
     "seeder",
     "mongodb",
-    "mongoose"
+    "mongoose",
+    "mongofill",
+    "mongoseed"
   ],
   "author": "Navid079",
-  "license": "ISC",
+  "license": "AGPL-3.0-only",
   "bugs": {
     "url": "https://github.com/Navid079/MongoFill.js/issues"
   },
