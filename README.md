@@ -33,7 +33,7 @@ npm install mongofill
 
 ## License
 
-MongoFill is licensed under the [MIT License](LICENSE), which means you're free to use, modify, and distribute the codebase.
+MongoFill is licensed under the [GNU General Public License v3.0](LICENSE).
 We encourage you to contribute back to the project and share your improvements with the community.
 
 ## Contribution
